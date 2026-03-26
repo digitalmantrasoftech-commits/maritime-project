@@ -17,16 +17,22 @@ import UVSSPage from './components/UVSSPage';
 import GateAutomationPage from './components/GateAutomationPage';
 import TimedRedirect from './components/TimedRedirect';
 import { images } from './assets/images';
-
+import DigitalTwinPage from './components/DigitalTwinPage';
 function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleServiceNavigation = (page: string) => {
+const handleServiceNavigation = (page: string) => {
+  if (page === 'iccc') {
+    navigate('/port-solutions/iccc');
+  } else if (page === 'digital-twin') {
+    navigate('/port-solutions/digital-twin');
+  } else {
     navigate(`/services/${page}`);
-    setMobileMenuOpen(false);
-  };
+  }
+  setMobileMenuOpen(false);
+};
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -245,6 +251,7 @@ function AppContent() {
       <Navigation />
       <Routes>
         <Route path="/" element={<Home onNavigate={(page) => navigate(`/services/${page}`)} />} />
+<Route path="/port-solutions/digital-twin" element={<DigitalTwinPage />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/blog" element={<Blog />} />

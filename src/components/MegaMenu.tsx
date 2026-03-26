@@ -71,10 +71,11 @@ export default function MegaMenu({ onNavigate }: MegaMenuProps) {
           description: 'Integrated control platforms'
         },
         {
-          icon: Cpu,
-          title: 'Digital Twin',
-          description: 'Virtual port models'
-        }
+  icon: Cpu,
+  title: 'Digital Twin',
+  description: 'Virtual port models',
+  onClick: () => onNavigate?.('digital-twin')
+}
       ]
     },
     {
